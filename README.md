@@ -1,4 +1,4 @@
-# tennivaloKezelo
+# tennivaloKezelo / toDo App
 
 ## Summary
 This is a basic to-do application that works from the console. This project was part of the StudiCore Online curriculum.
@@ -7,29 +7,44 @@ This is a basic to-do application that works from the console. This project was 
 
 ## What does it do?
 
-First the program lists the default tasks that was already added to it. Below that it shows the menu and asks us what we want to do. 
+First the program lists the default tasks that was already added to it (or nothing, if it is a fresh start, but I use it as was in the task).
+Below that, it shows the menu and asks us what we want to do. 
 
 <a href="https://imgur.com/UsOwI57"><img src="https://i.imgur.com/UsOwI57.png" title="initial state" /></a>
 
-Now we can add a new task by pressing the key we want and press enter.
+Now we can add a new task by pressing the <i>a</i> key and press `Enter`.
 
-<b>Note</b>:If we provide an unrecognized letter, the program tells us, that we gave it an invalid input, and quits.
+<b>Note</b>: If we provide an unsupported letter, or any key, the program tells us that we gave it an invalid input, and quits.
 
-Let us add a new task.
+The program asks for the name, deadline, and the severity of the task.
 
 <a href="https://imgur.com/LYwqmmz"><img src="https://i.imgur.com/LYwqmmz.png" title="source: imgur.com" /></a>
 
-As you can see, the new task is added to the list. The ID of the task is 4, instead of 3. Why is that? It is because there is already a completed task added.
-Let's take a look at it, press f.
+As you can see, the new task is added to the list. You might notice, that the ID of the task is 4, instead of 3. Why is that? It is because there is already a completed task added, which is hidden by default.
+Let's take a look at it, press <i>f</i> and hit `Enter`.
 
 <a href="https://imgur.com/WarX221"><img src="https://i.imgur.com/WarX221.png" title="source: imgur.com" /></a>
 
-There it is! Number 3, marked as finished. The program lists the unfinished tasks and the menu after every command. Now let's try sorting according to the name of the tasks. Press e.
+There it is! Number 3, marked as finished in the last column. The program lists the unfinished tasks and the menu after every command. Now let's try sorting according to the name of the tasks. Press <i>e</i> and as usual, `Enter`.
 
 <a href="https://imgur.com/P7jmgEF"><img src="https://i.imgur.com/P7jmgEF.png" title="source: imgur.com" /></a>
 
-We can see that the unfinished tasks are sorted according to their names. If we press g, the program terminates. This concludes the <b>What does it do?</b> section.
+We can see that the unfinished tasks are sorted according to their names. The program can also sort by other criteria, and new options can be easily added.
+To exit, press <i>g</i> and `Enter`.
+
+This concludes the <b>What does it do?</b> section.
 
 ## How does it work?
 
-to be continued...
+The program uses a <i>.csv</i> file to store the various tasks.
+
+The program consists of various files, here's a short summary about the classes.
+* TennivaloKezelo.java : This is the main file. It's responsibility is to keep the tasklist alive until exiting, to ensure that all the data is in the appropiate format, and to show the menu.
+* Tennivalo.java : This class represents a task.
+* Tennivalok.java : This class is a list of the tasks in the program, and also responsible for setting the appropiate Comparator.
+* FileIO.java : This class is responsible to read/write the csv file.
+* Comparator classes : They all implement the Comparator interface, and responsible for sorting tasks according to their type.
+
+At startup, the program looks for the csv file that is provided, and reads it's contents. If it cannot validate the data, it will throw an error and exit. If the reading is successful, it will show the unfinished tasks. A switch statement controls the options that the user can choose. When sorting, the corresponding code sets the appropiate comparator to the Tennivalok list and invokes the sort method.
+
+When a new task is added, it is automatically written to the csv file.
