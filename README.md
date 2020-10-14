@@ -36,15 +36,13 @@ This concludes the <b>What does it do?</b> section.
 
 ## How does it work?
 
-The program uses a <i>.csv</i> file to store the various tasks.
+The program uses a <i>csv</i> file to store the various tasks.
 
 The program consists of various files, here's a short summary about the classes.
 * TennivaloKezelo.java : This is the main file. It's responsibility is to keep the tasklist alive until exiting, to ensure that all the data is in the appropiate format, and to show the menu.
 * Tennivalo.java : This class represents a task.
-* Tennivalok.java : This class is a list of the tasks in the program, and also responsible for setting the appropiate Comparator.
+* Tennivalok.java : This class is a list of the tasks in the program, and also responsible for using the appropiate Comparator.
 * FileIO.java : This class is responsible to read/write the csv file.
-* Comparator classes : They all implement the Comparator interface, and responsible for sorting tasks according to their type.
+* Comparator classes : They all implement the Comparator interface, and responsible for sorting tasks according to their type (e.g.: according to name, or date, etc...).
 
-At startup, the program looks for the csv file that is provided, and reads it's contents. If it cannot validate the data, it will throw an error and exit. If the reading is successful, it will show the unfinished tasks. A switch statement controls the options that the user can choose. When sorting, the corresponding code sets the appropiate comparator to the Tennivalok list and invokes the sort method.
-
-When a new task is added, it is automatically written to the csv file.
+At startup, the program looks for the <i>csv</i> file that is provided, and reads its contents. If a <i>csv</i> file is not provided, the program starts with an empty list. If the <i>csv</i> exists, but the program cannot validate the data, it will throw an error and exit. If the reading is successful, it will show the unfinished tasks. A `switch` statement controls the options that the user can choose. When sorting, the corresponding code sets the appropiate comparator to the Tennivalok list and invokes the sort method. When a new task is added, it is automatically written to the <i>csv</i> file.
